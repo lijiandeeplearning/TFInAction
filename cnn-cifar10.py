@@ -83,5 +83,5 @@ while step < num_iter:
     predictions = sess.run([top_k_op], feed_dict={image_holder:image_batch, label_holder:label_batch})
     true_count += np.sum(predictions)
     step += 1
-precision = true_count/total_sample_count
+precision = float(true_count)/total_sample_count
 print('precision @ 1 = %.3f' % precision)
