@@ -1,4 +1,4 @@
-import cifar10.cifar10,cifar10.cifar10_input
+from cifar10 import cifar10,cifar10_input
 import tensorflow as tf
 import numpy as np
 import time
@@ -20,9 +20,9 @@ def loss(logits, labels):
 max_steps = 3000
 batch_size = 128
 data_dir = '/tmp/cifar10_data/cifar-10-batches-bin'
-cifar10.cifar10.maybe_download_and_extract()
-images_train, labels_train = cifar10.cifar10_input.distorted_inputs(data_dir = data_dir,batch_size= batch_size)
-images_test, labels_test = cifar10.cifar10_input.inputs(eval_data=True,data_dir=data_dir,batch_size=batch_size)
+cifar10.maybe_download_and_extract()
+images_train, labels_train = cifar10_input.distorted_inputs(data_dir = data_dir,batch_size= batch_size)
+images_test, labels_test = cifar10_input.inputs(eval_data=True,data_dir=data_dir,batch_size=batch_size)
 image_holder = tf.placeholder(tf.float32, [batch_size,24,24,3])
 label_holder = tf.placeholder(tf.int32,[batch_size])
 #Layer1
