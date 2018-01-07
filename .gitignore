@@ -1,11 +1,11 @@
+# My configurations:
 MNIST_data/*
-.pyc
+cifar-10-binary.tar.gz
 # Windows:
 Thumbs.db
 ehthumbs.db
 Desktop.ini
 *.swp
-
 # Python:
 *.py[cod]
 *.so
@@ -13,6 +13,3 @@ Desktop.ini
 *.egg-info
 dist
 build
-
-# My configurations:
-cifar-10-binary.tar.gz 
