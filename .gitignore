@@ -14,5 +14,4 @@ dist
 build
 
 # My configurations:
-db.ini
-deploy_key_rsa
+cifar-10-binary.tar.gz 
