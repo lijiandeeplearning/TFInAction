@@ -4,6 +4,7 @@ MNIST_data/*
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+*.swp
 
 # Python:
 *.py[cod]
