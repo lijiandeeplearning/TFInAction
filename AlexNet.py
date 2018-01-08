@@ -81,7 +81,7 @@ def time_tensorflow_run(session, target, info_string):
             total_duration += duration
             total_duration_squared += duration * duration
     mn = float(total_duration) / num_batches
-    vr = float(total_duration) / num_batches - mn * mn
+    vr = float(total_duration_squared) / num_batches - mn * mn
     print(total_duration)
     print(num_batches)
     print(vr)
