@@ -4,7 +4,7 @@ import time
 import tensorflow as tf
 
 batch_size=32
-num_batches=100
+num_batches=10
 
 def conv_op(input_op, name, kh, kw, n_out, dh, dw, p):
     n_in = input_op.get_shape()[-1].value
@@ -38,7 +38,7 @@ def mpool_op(input_op, name, kh, kw, dh, dw):
 def inference_op(input_op, keep_prob):
     p = []
     conv1_1 = conv_op(input_op, name="conv1_1", kh=3, kw=3, n_out=64, dh=1, dw=1, p=p)
-    conv1_2 = conv_op(input_op, name="conv1_2", kh=3, kw=3, n_out=64, dh=1, dw=1, p=p)
+    conv1_2 = conv_op(conv1_1, name="conv1_2", kh=3, kw=3, n_out=64, dh=1, dw=1, p=p)
     pool1 = mpool_op(conv1_2, name="pool1", kh=2, kw=2, dh=2, dw=2)
     conv2_1 = conv_op(pool1, name="conv2_1", kh=3,kw=3, n_out=128, dh=1, dw=1, p=p)
     conv2_2 = conv_op(conv2_1, name="conv2_2", kh=3, kw=3, n_out=128, dh=1, dw=1, p=p)
