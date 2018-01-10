@@ -49,7 +49,7 @@ def inference_op(input_op, keep_prob):
     pool3 = mpool_op(conv3_3, name="pool3", kh=2, kw=2, dh=2, dw=2)
     conv4_1 = conv_op(pool3, name="conv4_1", kh=3, kw=3, n_out=512, dh=1, dw=1, p=p)
     conv4_2 = conv_op(conv4_1, name="conv4_2", kh=3, kw=3, n_out=512, dh=1, dw=1, p=p)
-    conv4_3 = conv_op(conv4_2, name="conv4_2", kh=3, kw=3, n_out=512, dh=1, dw=1, p=p)
+    conv4_3 = conv_op(conv4_2, name="conv4_3", kh=3, kw=3, n_out=512, dh=1, dw=1, p=p)
     pool4 = mpool_op(conv4_3, name="pool4", kh=2, kw=2, dh=2, dw=2)
     conv5_1 = conv_op(pool4, name="conv5_1", kh=3, kw=3, n_out=512, dh=1, dw=1, p=p)
     conv5_2 = conv_op(conv5_1, name="conv5_2", kh=3, kw=3, n_out=512, dh=1, dw=1, p=p)
