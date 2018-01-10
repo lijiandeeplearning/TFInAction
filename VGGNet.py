@@ -97,7 +97,7 @@ def run_benchmark():
         time_tensorflow_run(sess, predictions, {keep_prob:1}, "Forward")
         objective = tf.nn.l2_loss(fc8)
         grad = tf.gradients(objective, p)
-        print(tyoe(grad))
+        print(type(grad))
         time_tensorflow_run(sess, grad, {keep_prob:0.5}, "Forward-backward")
 
 run_benchmark()
