@@ -24,7 +24,7 @@ def fc_op(input_op, name, n_out, p):
     n_in = input_op.get_shape()[-1].value
     with tf.name_scope(name) as scope:
         kernel = tf.get_variable(scope + "w", shape=[n_in, n_out], dtype=tf.float32,
-                                 initializer=tf.contrib.layers.xavier_initializer_conv2d())
+                                 initializer=tf.contrib.layers.xavier_initializer())
         biases = tf.Variable(tf.constant(0.1, shape=[n_out], dtype=tf.float32), name='b')
         activation = tf.nn.relu_layer(input_op, kernel, biases, name=scope)
         p += [kernel, biases]
