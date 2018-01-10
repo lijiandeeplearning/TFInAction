@@ -4,7 +4,7 @@ import time
 import tensorflow as tf
 
 batch_size=32
-num_batches=10
+num_batches=100
 
 def conv_op(input_op, name, kh, kw, n_out, dh, dw, p):
     n_in = input_op.get_shape()[-1].value
