@@ -1,5 +1,6 @@
 # My configurations:
 MNIST_data/*
+simple-examples/*
 cifar-10-binary.tar.gz
 # Windows:
 Thumbs.db
