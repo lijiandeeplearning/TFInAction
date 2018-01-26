@@ -199,8 +199,11 @@ with tf.Graph().as_default():
         with tf.variable_scope("Model", reuse=True, initializer=initializer):
             mtest = PTBModel(is_training=False, config=eval_config, input_=test_input)
     sv = tf.train.Supervisor()
-  #  config.gpu_options.per_process_gpu_memory_fraction = 0.5
-    with sv.managed_session(config=tf.ConfigProto(log_device_placement=True)) as session:
+    config = tf.ConfigProto()
+    config.gpu_options.per_process_gpu_memory_fraction = 0.3
+    with sv.managed_session(config=config) as session:
+    # config.gpu_options.per_process_gpu_memory_fraction = 0.5
+    # with sv.managed_session(config=tf.ConfigProto(log_device_placement=True)) as session:
         for i in range(config.max_max_epoch):
             lr_decay = config.lr_decay ** max(i + 1 - config.max_epoch, 0.0)
             m.assign_lr(session, config.learning_rate * lr_decay)
