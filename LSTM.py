@@ -180,8 +180,8 @@ def run_epoch(session, model, eval_op=None, verbose=False):
 
 raw_data = reader.ptb_raw_data('simple-examples/data/')
 train_data, valid_data, test_data, _ = raw_data
-config = SmallConfig()
-eval_config = SmallConfig()
+config = LargeConfig()
+eval_config = LargeConfig()
 eval_config.batch_size = 1
 eval_config.num_steps = 1
 with tf.Graph().as_default():
@@ -199,7 +199,9 @@ with tf.Graph().as_default():
         with tf.variable_scope("Model", reuse=True, initializer=initializer):
             mtest = PTBModel(is_training=False, config=eval_config, input_=test_input)
     sv = tf.train.Supervisor()
-    with sv.managed_session() as session:
+    config = tf.ConfigProto
+    config.gpu_options.per_process_gpu_memory_fraction = 0.5
+    with sv.managed_session(config=config) as session:
         for i in range(config.max_max_epoch):
             lr_decay = config.lr_decay ** max(i + 1 - config.max_epoch, 0.0)
             m.assign_lr(session, config.learning_rate * lr_decay)
