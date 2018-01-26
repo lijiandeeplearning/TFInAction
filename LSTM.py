@@ -199,9 +199,9 @@ with tf.Graph().as_default():
         with tf.variable_scope("Model", reuse=True, initializer=initializer):
             mtest = PTBModel(is_training=False, config=eval_config, input_=test_input)
     sv = tf.train.Supervisor()
-    config = tf.ConfigProto()
-    config.gpu_options.allow_growth = True
-    with sv.managed_session(config=tf.ConfigProto(allow_growth=True)) as session:
+    gpuConfig = tf.ConfigProto()
+    gpuConfig.gpu_options.allow_growth = True
+    with sv.managed_session(config=gpuConfig) as session:
     # config.gpu_options.per_process_gpu_memory_fraction = 0.5
     # with sv.managed_session(config=tf.ConfigProto(log_device_placement=True)) as session:
         for i in range(config.max_max_epoch):
